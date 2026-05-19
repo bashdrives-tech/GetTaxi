@@ -17,34 +17,39 @@
         header.wp-block-template-part, footer.wp-block-template-part, .wp-block-site-title, h1.wp-block-post-title, .entry-title, .wp-site-blocks > header, .wp-site-blocks > footer { display: none !important; }
         .wp-site-blocks, body, .entry-content { padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
         :root { --bg-dark: #050b14; --bg-card: #0f1623; --primary-gold: #d4a017; --primary-green: #22c55e; --text-white: #ffffff; --text-grey: #9ca3af; }
-        * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        * { box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--bg-dark); color: var(--text-white); line-height: 1.6; padding-bottom: 70px; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; position: relative; }
         .text-center { text-align: center; }
         .text-gold { color: var(--primary-gold); }
+        
+        /* Three Dot Menu UI Layout */
+        .header-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; margin-bottom: 10px; }
+        .three-dot-btn { background: none; border: none; color: var(--primary-gold); font-size: 1.5rem; cursor: pointer; padding: 5px 10px; z-index: 1001; transition: transform 0.2s; }
+        .three-dot-btn:top { transform: scale(1.1); }
+        
+        /* Sliding Navigation Drawer */
+        .nav-drawer { position: fixed; top: 0; right: -250px; width: 250px; height: 100%; background: #0b111e; z-index: 1000; box-shadow: -5px 0 25px rgba(0,0,0,0.8); transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 70px 20px 20px 20px; display: flex; flex-direction: column; gap: 15px; border-left: 1px solid rgba(212, 160, 23, 0.2); }
+        .nav-drawer.open { right: 0; }
+        .nav-link { color: #fff; text-decoration: none; font-size: 1rem; font-weight: 600; padding: 12px 15px; border-radius: 8px; background: rgba(255,255,255,0.03); display: flex; align-items: center; gap: 10px; transition: background 0.2s; }
+        .nav-link:hover { background: rgba(212, 160, 23, 0.15); color: var(--primary-gold); }
+        .nav-link i { color: var(--primary-gold); width: 20px; }
+        .drawer-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; }
+        .drawer-overlay.show { display: block; }
+
         .btn { display: flex; justify-content: center; align-items: center; width: 100%; padding: 15px; border-radius: 10px; font-weight: 700; font-size: 1.05rem; margin-bottom: 14px; border: none; gap: 10px; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
         .btn-gold { background: var(--primary-gold); color: #050b14; }
-        
-        /* Premium Blue/Black Gradient Background Over the Hero Image */
-        .hero { padding: 25px 0 40px; background: radial-gradient(circle at center, rgba(11, 27, 54, 0.85), #050b14), url('hero.png'); background-size: cover; background-position: center; margin-top: -30px; }
-        
-        .brand-title { font-family: 'Fraunces', serif; font-size: 2.6rem; color: var(--primary-gold); margin-bottom: 5px; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .tagline-pill { background: rgba(212, 160, 23, 0.1); color: var(--primary-gold); display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; margin: 20px 0 15px; border: 1px solid rgba(212, 160, 23, 0.4); font-weight: 700; letter-spacing: 1px; }
-        
-        /* Live Status Glow Styling */
+        .hero { padding: 15px 0 40px; background: radial-gradient(circle at center, rgba(11, 27, 54, 0.85), #050b14), url('hero.png'); background-size: cover; background-position: center; margin-top: -30px; }
+        .brand-title { font-family: 'Fraunces', serif; font-size: 2.6rem; color: var(--primary-gold); margin-bottom: 5px; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.5); margin-top: 0; }
+        .tagline-pill { background: rgba(212, 160, 23, 0.1); color: var(--primary-gold); display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; margin: 5px 0 15px; border: 1px solid rgba(212, 160, 23, 0.4); font-weight: 700; letter-spacing: 1px; }
         .live-status { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: #e5e7eb; margin-bottom: 15px; background: rgba(34, 197, 94, 0.15); padding: 5px 14px; border-radius: 12px; border: 1px solid rgba(34, 197, 94, 0.3); }
         .live-dot { width: 8px; height: 8px; background-color: var(--primary-green); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--primary-green); animation: status-blink 1.5s infinite ease-in-out; }
-        
-        /* Catchy Hero Icons Styling */
         .hero-features-list { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 15px 0 25px 0; }
         .hero-icon-tag { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; color: #f3f4f6; display: flex; align-items: center; gap: 6px; }
         .hero-icon-tag i { color: var(--primary-gold); font-size: 0.85rem; }
-        
-        /* Trust Badge Styling */
         .trust-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; font-weight: 600; color: #9ca3af; margin-top: 5px; margin-bottom: 15px; }
         .trust-badge i { color: var(--primary-green); }
-
         .stats-row { display: flex; justify-content: space-between; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
         .feature-card { background: var(--bg-card); padding: 15px; border-radius: 12px; border: 1px solid #1f2937; text-align: left; }
@@ -52,7 +57,14 @@
         .tabs-nav { display: flex; background: #111827; padding: 4px; border-radius: 10px; margin-bottom: 20px; overflow-x: auto; gap: 2px; }
         .tab-btn { flex: 1; padding: 10px 5px; background: transparent; border: none; color: var(--text-grey); font-size: 0.75rem; cursor: pointer; font-weight: 600; white-space: nowrap; }
         .tab-btn.active { background: var(--primary-gold); color: #000; border-radius: 6px; }
-        input, select { width: 100%; padding: 14px; border-radius: 8px; border: none; margin-bottom: 10px; font-size: 1rem; text-align: center; color: #000; font-weight: 500; }
+        input, select { width: 100%; padding: 14px; border-radius: 8px; border: none; margin-bottom: 12px; font-size: 1rem; text-align: center; color: #000; font-weight: 500; }
+        
+        /* Dedicated Hidden Option Wrappers */
+        #oneway-options { display: none; margin: 5px 0 15px; justify-content: center; gap: 25px; font-weight: 600; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+        #oneway-options input { width: auto; margin-bottom: 0; cursor: pointer; }
+        #tour-dropdown-container { display: none; }
+
+        .keyword-helper-text { font-size: 0.8rem; color: #9ca3af; margin-top: 10px; font-style: italic; font-weight: 500; }
         .fleet-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 20px; }
         .fleet-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid #1f2937; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .fleet-img { width: 100%; height: 200px; object-fit: cover; }
@@ -70,8 +82,6 @@
         .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); padding: 20px; overflow-y: auto; }
         .modal-content { background: var(--bg-card); padding: 25px; border-radius: 15px; max-width: 500px; margin: 40px auto; border: 1px solid var(--primary-gold); color: #fff; font-size: 0.9rem; text-align: left; }
         .close-modal { color: var(--primary-gold); float: right; font-size: 28px; font-weight: bold; cursor: pointer; margin-top: -10px; }
-        
-        /* Sticky Footer & Pulse Keyframes */
         .sticky-footer { position: fixed; bottom: 0; left: 0; width: 100%; background: #0f1623; display: flex; padding: 12px; gap: 10px; z-index: 9999; box-shadow: 0 -5px 25px rgba(0,0,0,0.6); }
         .sticky-btn { flex: 1; padding: 14px; border-radius: 8px; font-weight: 700; font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 8px; text-decoration: none; border: none; color: #fff; }
         .sticky-pulse { animation: cta-pulse 2s infinite; }
@@ -81,34 +91,49 @@
 </head>
 <body id="home">
 
-<div class="hero"><div class="container text-center">
-    <div class="tagline-pill">COIMBATORE'S BEST FARE TAXI SERVICE</div>
-    <h1 class="brand-title">Get Taxi Kovai</h1>
-    
-    <h2 style="font-size: 1.8rem; color: #fff; line-height: 1.4; font-weight: 700; margin-bottom: 5px;">
-        Your Trusted Ride in <span class="text-gold">Coimbatore</span>
-    </h2>
-    <p style="font-size: 0.95rem; color: #9ca3af; font-weight: 600; margin: 0 0 15px 0; letter-spacing: 0.5px;">
-        Safe, Reliable, and On-Time. Every Single Time.
-    </p>
+<div id="drawerOverlay" class="drawer-overlay" onclick="toggleMenu()"></div>
+<nav id="navDrawer" class="nav-drawer">
+    <a href="#booking" class="nav-link" onclick="toggleMenu()"><i class="fas fa-taxi"></i> Book Instant Cab</a>
+    <a href="#tours" class="nav-link" onclick="toggleMenu()"><i class="fas fa-map-marked-alt"></i> Our Packages</a>
+    <a href="#fleet" class="nav-link" onclick="toggleMenu()"><i class="fas fa-car"></i> Our Fleet</a>
+    <a href="#features" class="nav-link" onclick="toggleMenu()"><i class="fas fa-star"></i> Why Choose Us</a>
+    <a href="#" class="nav-link" onclick="toggleMenu(); openModal('about')"><i class="fas fa-info-circle"></i> About Our Fleet</a>
+</nav>
 
-    <div class="live-status"><span class="live-dot"></span> Available 24/7 Live</div>
+<div class="hero"><div class="container">
     
-    <div class="hero-features-list">
-        <div class="hero-icon-tag"><i class="fas fa-bolt"></i> Instant Pickup</div>
-        <div class="hero-icon-tag"><i class="fas fa-hand-holding-dollar"></i> No Surge Pricing</div>
-        <div class="hero-icon-tag"><i class="fas fa-user-shield"></i> Professional Drivers</div>
+    <div class="header-nav">
+        <div class="tagline-pill">COIMBATORE'S BEST FARE TAXI SERVICE</div>
+        <button class="three-dot-btn" onclick="toggleMenu()"><i class="fas fa-ellipsis-v"></i></button>
     </div>
     
-    <a href="tel:+919043743777" class="btn btn-gold"><i class="fas fa-phone-alt"></i> CALL 9043743777</a>
-    <a href="https://wa.me/919043743777" class="btn" style="background:#22c55e; color:white;"><i class="fab fa-whatsapp"></i> BOOK ON WHATSAPP</a>
-    
-    <div class="trust-badge"><i class="fas fa-check-circle"></i> Verified Local Service • 4.9★ Rated in Coimbatore</div>
+    <div class="text-center">
+        <h1 class="brand-title">Get Taxi Kovai</h1>
+        <h2 style="font-size: 1.8rem; color: #fff; line-height: 1.4; font-weight: 700; margin-bottom: 5px;">
+            Your Trusted Ride in <span class="text-gold">Coimbatore</span>
+        </h2>
+        <p style="font-size: 0.95rem; color: #9ca3af; font-weight: 600; margin: 0 0 15px 0; letter-spacing: 0.5px;">
+            Safe, Reliable, and On-Time. Every Single Time.
+        </p>
 
-    <div class="stats-row">
-        <div class="text-center"><span class="text-gold" style="font-size: 1.3rem; font-weight: 700;">24 HR</span><br><small style="color: var(--text-grey); font-weight: 600;">Booking</small></div>
-        <div class="text-center"><span class="text-gold" style="font-size: 1.3rem; font-weight: 700;">FAST</span><br><small style="color: var(--text-grey); font-weight: 600;">Pickup</small></div>
-        <div class="text-center"><span class="text-gold" style="font-size: 1.3rem; font-weight: 700;">LOWEST</span><br><small style="color: var(--text-grey); font-weight: 600;">Fares</small></div>
+        <div class="live-status"><span class="live-dot"></span> Available 24/7 Live</div>
+        
+        <div class="hero-features-list">
+            <div class="hero-icon-tag"><i class="fas fa-bolt"></i> Instant Pickup</div>
+            <div class="hero-icon-tag"><i class="fas fa-hand-holding-dollar"></i> No Surge Pricing</div>
+            <div class="hero-icon-tag"><i class="fas fa-user-shield"></i> Professional Drivers</div>
+        </div>
+        
+        <a href="tel:+919043743777" class="btn btn-gold"><i class="fas fa-phone-alt"></i> CALL 9043743777</a>
+        <a href="https://wa.me/919043743777" class="btn" style="background:#22c55e; color:white;"><i class="fab fa-whatsapp"></i> BOOK ON WHATSAPP</a>
+        
+        <div class="trust-badge"><i class="fas fa-check-circle"></i> Verified Local Service • 4.9★ Rated in Coimbatore</div>
+
+        <div class="stats-row">
+            <div class="text-center"><span class="text-gold" style="font-size: 1.3rem; font-weight: 700;">24 HR</span><br><small style="color: var(--text-grey); font-weight: 600;">Booking</small></div>
+            <div class="text-center"><span class="text-gold" style="font-size: 1.3rem; font-weight: 700;">FAST</span><br><small style="color: var(--text-grey); font-weight: 600;">Pickup</small></div>
+            <div class="text-center"><span class="text-gold" style="font-size: 1.3rem; font-weight: 700;">LOWEST</span><br><small style="color: var(--text-grey); font-weight: 600;">Fares</small></div>
+        </div>
     </div>
 </div></div>
 
@@ -123,7 +148,7 @@
 </section>
 
 <section id="booking" class="container text-center">
-    <h3>Book Instantly</h3>
+    <h3>Book the Best Taxi Service in Coimbatore Instantly</h3>
     <div class="tabs-nav">
         <button id="btn-city" class="tab-btn active" onclick="setCalcMode('city')">City Ride</button>
         <button id="btn-oneway" class="tab-btn" onclick="setCalcMode('oneway')">One Way Drop</button>
@@ -132,10 +157,22 @@
     <div class="fare-box">
         <input type="text" id="fromCity" placeholder="Pickup Location">
         <input type="text" id="toCity" placeholder="Drop Location">
-        <div id="oneway-options" style="display:none; margin: 10px 0 20px; display: flex; justify-content: center; gap: 20px;">
+        
+        <div id="oneway-options">
             <label><input type="radio" name="tripType" value="oneway" checked> One Way</label>
             <label><input type="radio" name="tripType" value="round"> Round Trip</label>
         </div>
+        
+        <div id="tour-dropdown-container">
+            <select id="tourSelect">
+                <option value="none">-- Select Your Outstation Tour Package --</option>
+                <option value="ooty">Coimbatore to Ooty Outstation Taxi Tour</option>
+                <option value="munnar">Coimbatore to Munnar Premium Holiday Tour</option>
+                <option value="kodai">Coimbatore to Kodaikanal Sightseeing Package</option>
+                <option value="coonoor">Coimbatore to Coonoor Scenic Nature Trip</option>
+            </select>
+        </div>
+
         <input type="text" id="custName" placeholder="Your Name">
         <select id="carSelect">
             <option value="15">Sedan (Petrol/CNG)</option>
@@ -145,6 +182,9 @@
             <option value="40">Urbania (13 Seater)</option>
         </select>
         <button class="btn btn-gold" onclick="calculateFare()">Get Quote Now</button>
+        
+        <div class="keyword-helper-text">Available for reliable Coimbatore Airport Taxi pickups, Gandhipuram travel, and local RS Puram trips.</div>
+        
         <div id="fareResult" style="margin-top:20px; display:none; font-size: 1.1rem; font-weight: bold; color: #22c55e; background: rgba(34, 197, 94, 0.1); padding: 15px; border-radius: 8px; border: 1px dashed #22c55e;"></div>
         <button id="confirmBookingBtn" class="btn" style="display:none; background:#22c55e; color:white; margin-top:10px;" onclick="confirmBooking()"><i class="fab fa-whatsapp"></i> CONFIRM BOOKING</button>
     </div>
@@ -164,6 +204,8 @@
 
 <section id="tours" class="container">
     <h3 class="text-center">Top Tour Packages</h3>
+    <p class="text-center" style="font-size: 0.85rem; color: #9ca3af; margin-top: -10px; margin-bottom: 20px;">We offer affordable outstation cab packages from Coimbatore to major travel destinations with premium vehicles.</p>
+    
     <div class="tour-card"><div class="tour-img" style="background-image:url('ooty.png');"><div class="tour-overlay"><b>Ooty</b></div></div><div class="tour-points"><div class="t-point"><i class="fas fa-check-circle"></i> Botanical Garden</div><div class="t-point"><i class="fas fa-check-circle"></i> Ooty Lake</div><div class="t-point"><i class="fas fa-check-circle"></i> Doddabetta Peak</div><div class="t-point"><i class="fas fa-check-circle"></i> Rose Garden</div></div><div style="padding:15px;"><a href="https://wa.me/919043743777" class="btn btn-gold">Instant Ooty Booking</a></div></div>
     <div class="tour-card"><div class="tour-img" style="background-image:url('munnar.png');"><div class="tour-overlay"><b>Munnar</b></div></div><div class="tour-points"><div class="t-point"><i class="fas fa-check-circle"></i> Tea Museum</div><div class="t-point"><i class="fas fa-check-circle"></i> Mattupetty Dam</div><div class="t-point"><i class="fas fa-check-circle"></i> Eravikulam Park</div><div class="t-point"><i class="fas fa-check-circle"></i> Echo Point</div></div><div style="padding:15px;"><a href="https://wa.me/919043743777" class="btn btn-gold">Instant Munnar Booking</a></div></div>
     <div class="tour-card"><div class="tour-img" style="background-image:url('kodaikanal.png');"><div class="tour-overlay"><b>Kodaikanal</b></div></div><div class="tour-points"><div class="t-point"><i class="fas fa-check-circle"></i> Kodai Lake</div><div class="t-point"><i class="fas fa-check-circle"></i> Pillar Rocks</div><div class="t-point"><i class="fas fa-check-circle"></i> Coaker's Walk</div><div class="t-point"><i class="fas fa-check-circle"></i> Pine Forest</div></div><div style="padding:15px;"><a href="https://wa.me/919043743777" class="btn btn-gold">Instant Kodai Booking</a></div></div>
@@ -172,7 +214,7 @@
 
 <section id="faq" class="container text-center">
     <h3>Frequently Asked Questions</h3>
-    <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How do I book a taxi? <span class="faq-icon">+</span></button><div class="faq-answer">Call 9043743777 or use the WhatsApp button for instant booking.</div></div>
+    <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How does your service compare to options like Red Taxi Coimbatore? <span class="faq-icon">+</span></button><div class="faq-answer">We offer a highly reliable, premium alternative with guaranteed on-time pickups, professional drivers, and competitive local or outstation taxi rates per km with zero surge pricing.</div></div>
     <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Are there any hidden charges? <span class="faq-icon">+</span></button><div class="faq-answer">No hidden charges. Tolls, state permits, and parking are extra.</div></div>
     <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Is it safe for night travel? <span class="faq-icon">+</span></button><div class="faq-answer">Yes, our professional drivers are trained for safe night travel.</div></div>
     <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Do you provide Airport Pickup? <span class="faq-icon">+</span></button><div class="faq-answer">Yes, we provide 24/7 airport transfers from Coimbatore Airport.</div></div>
@@ -195,9 +237,17 @@
 <div id="modalPrivacy" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('privacy')">&times;</span><h3>Privacy Policy</h3><p>We collect your name and location data solely for providing taxi services. Your data is handled securely and never shared with third parties for marketing purposes.</p></div></div>
 <div id="modalDisclaimer" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('disclaimer')">&times;</span><h3>Disclaimer</h3><p>Road distances are estimated using Google Maps API. Final fares are based on actual odometer readings. Tolls, parking, and state permit charges are extra.</p></div></div>
 
+<div id="modalAbout" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('about')">&times;</span><h3>About Get Taxi Kovai</h3><p>We are Coimbatore's premier taxi and custom travel business, dedicated to delivering transparent, fixed-fare transport across Tamil Nadu and Kerala. Operating directly out of the city center, our fleet provides exceptionally clear premium audio cabins, strict 24/7 reliability, zero surge traps, and verified elite local drivers for an uncompromised travel standard.</p></div></div>
+
 <script>
 let autocompleteFrom, autocompleteTo;
 let currentMode = 'city';
+
+// Simple Toggle Logic for the Three Dot Menu Button
+function toggleMenu() {
+    document.getElementById('navDrawer').classList.toggle('open');
+    document.getElementById('drawerOverlay').classList.toggle('show');
+}
 
 function initGoogle() {
     autocompleteFrom = new google.maps.places.Autocomplete(document.getElementById('fromCity'), {componentRestrictions: {country: 'in'}});
@@ -208,7 +258,10 @@ function setCalcMode(mode) {
     currentMode = mode;
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById('btn-' + (mode==='oneway'?'oneway':mode==='airport'?'air':'city')).classList.add('active');
+    
+    // Strict Fix: Display container ONLY if oneway tab is selected, otherwise hide completely
     document.getElementById('oneway-options').style.display = (mode === 'oneway') ? 'flex' : 'none';
+    
     document.getElementById('fareResult').style.display = 'none';
     document.getElementById('confirmBookingBtn').style.display = 'none';
 }
@@ -254,13 +307,21 @@ function calculateFare() {
 function confirmBooking() {
     const name = document.getElementById('custName').value || 'Guest';
     const distPriceText = document.getElementById('fareResult').innerText.replace(/\n/g, ' ');
-    let msg = `*New Booking Inquiry*\nMode: ${currentMode}\nName: ${name}\nTrip: ${document.getElementById('fromCity').value} to ${document.getElementById('toCity').value}\nVehicle: ${document.getElementById('carSelect').options[document.getElementById('carSelect').selectedIndex].text}\n${distPriceText}`;
+    
+    // Check if an outstation holiday package is selected
+    const tSelect = document.getElementById('tourSelect');
+    let tourInfo = "";
+    if(tSelect && tSelect.value !== "none") {
+        tourInfo = `\nSelected Route: ${tSelect.options[tSelect.selectedIndex].text}`;
+    }
+
+    let msg = `*New Booking Inquiry*\nMode: ${currentMode}${tourInfo}\nName: ${name}\nTrip: ${document.getElementById('fromCity').value} to ${document.getElementById('toCity').value}\nVehicle: ${document.getElementById('carSelect').options[document.getElementById('carSelect').selectedIndex].text}\n${distPriceText}`;
     window.open(`https://wa.me/919043743777?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 function toggleFaq(btn) { btn.parentNode.classList.toggle('active'); }
-function openModal(t) { document.getElementById(t==='privacy'?'modalPrivacy':'modalDisclaimer').style.display='block'; }
-function closeModal(t) { document.getElementById(t==='privacy'?'modalPrivacy':'modalDisclaimer').style.display='none'; }
+function openModal(t) { document.getElementById(t==='privacy'?'modalPrivacy':t==='about'?'modalAbout':'modalDisclaimer').style.display='block'; }
+function closeModal(t) { document.getElementById(t==='privacy'?'modalPrivacy':t==='about'?'modalAbout':'modalDisclaimer').style.display='none'; }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7j5s8T369OKe4H69e3jhkGfM2sJhniCo&libraries=places&callback=initGoogle" async defer></script>
 </body>
