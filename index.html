@@ -27,7 +27,8 @@
         /* Three Dot Menu UI Layout */
         .header-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; margin-bottom: 10px; }
         .three-dot-btn { background: none; border: none; color: var(--primary-gold); font-size: 1.5rem; cursor: pointer; padding: 5px 10px; z-index: 1001; transition: transform 0.2s; }
-        .three-dot-btn:top { transform: scale(1.1); }
+        /* CHANGED: Fixed invalid pseudo-class from :top to :hover/:active */
+        .three-dot-btn:hover, .three-dot-btn:active { transform: scale(1.1); }
         
         /* Sliding Navigation Drawer */
         .nav-drawer { position: fixed; top: 0; right: -250px; width: 250px; height: 100%; background: #0b111e; z-index: 1000; box-shadow: -5px 0 25px rgba(0,0,0,0.8); transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 70px 20px 20px 20px; display: flex; flex-direction: column; gap: 15px; border-left: 1px solid rgba(212, 160, 23, 0.2); }
@@ -59,7 +60,6 @@
         .tab-btn.active { background: var(--primary-gold); color: #000; border-radius: 6px; }
         input, select { width: 100%; padding: 14px; border-radius: 8px; border: none; margin-bottom: 12px; font-size: 1rem; text-align: center; color: #000; font-weight: 500; }
         
-        /* Dedicated Hidden Option Wrappers */
         #oneway-options { display: none; margin: 5px 0 15px; justify-content: center; gap: 25px; font-weight: 600; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
         #oneway-options input { width: auto; margin-bottom: 0; cursor: pointer; }
         #tour-dropdown-container { display: none; }
@@ -243,7 +243,6 @@
 let autocompleteFrom, autocompleteTo;
 let currentMode = 'city';
 
-// Simple Toggle Logic for the Three Dot Menu Button
 function toggleMenu() {
     document.getElementById('navDrawer').classList.toggle('open');
     document.getElementById('drawerOverlay').classList.toggle('show');
@@ -254,13 +253,17 @@ function initGoogle() {
     autocompleteTo = new google.maps.places.Autocomplete(document.getElementById('toCity'), {componentRestrictions: {country: 'in'}});
 }
 
+// CHANGED: Fixed setCalcMode to properly toggle both oneway-options AND tour-dropdown
 function setCalcMode(mode) {
     currentMode = mode;
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById('btn-' + (mode==='oneway'?'oneway':mode==='airport'?'air':'city')).classList.add('active');
     
-    // Strict Fix: Display container ONLY if oneway tab is selected, otherwise hide completely
-    document.getElementById('oneway-options').style.display = (mode === 'oneway') ? 'flex' : 'none';
+    const showExtra = (mode === 'oneway') ? 'flex' : 'none';
+    const showTour = (mode === 'oneway') ? 'block' : 'none';
+    
+    document.getElementById('oneway-options').style.display = showExtra;
+    document.getElementById('tour-dropdown-container').style.display = showTour;
     
     document.getElementById('fareResult').style.display = 'none';
     document.getElementById('confirmBookingBtn').style.display = 'none';
@@ -308,7 +311,6 @@ function confirmBooking() {
     const name = document.getElementById('custName').value || 'Guest';
     const distPriceText = document.getElementById('fareResult').innerText.replace(/\n/g, ' ');
     
-    // Check if an outstation holiday package is selected
     const tSelect = document.getElementById('tourSelect');
     let tourInfo = "";
     if(tSelect && tSelect.value !== "none") {
