@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17918498714"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17918498714');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Nadu One-Way Drop Taxi | Go Kovai Cabs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        header.wp-block-template-part, footer.wp-block-template-part, .wp-block-site-title, h1.wp-block-post-title, .entry-title, .wp-site-blocks > header, .wp-site-blocks > footer { display: none !important; }
+        .wp-site-blocks, body, .entry-content { padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
+        :root { --bg-dark: #050b14; --bg-card: #0f1623; --primary-gold: #d4a017; --primary-green: #22c55e; --text-white: #ffffff; --text-grey: #9ca3af; }
+        * { box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-white); line-height: 1.6; padding-bottom: 70px; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; position: relative; }
+        .text-center { text-align: center; }
+        .text-gold { color: var(--primary-gold); }
+        
+        /* Three Dot Menu UI Layout */
+        .header-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; margin-bottom: 10px; }
+        .three-dot-btn { background: none; border: none; color: var(--primary-gold); font-size: 1.5rem; cursor: pointer; padding: 5px 10px; z-index: 1001; transition: transform 0.2s; }
+        .three-dot-btn:hover, .three-dot-btn:active { transform: scale(1.1); }
+        
+        /* Sliding Navigation Drawer */
+        .nav-drawer { position: fixed; top: 0; right: -250px; width: 250px; height: 100%; background: #0b111e; z-index: 1000; box-shadow: -5px 0 25px rgba(0,0,0,0.8); transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 70px 20px 20px 20px; display: flex; flex-direction: column; gap: 15px; border-left: 1px solid rgba(212, 160, 23, 0.2); }
+        .nav-drawer.open { right: 0; }
+        .nav-link { color: #fff; text-decoration: none; font-size: 1rem; font-weight: 600; padding: 12px 15px; border-radius: 8px; background: rgba(255,255,255,0.03); display: flex; align-items: center; gap: 10px; transition: background 0.2s; }
+        .nav-link:hover { background: rgba(212, 160, 23, 0.15); color: var(--primary-gold); }
+        .nav-link i { color: var(--primary-gold); width: 20px; }
+        .drawer-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; }
+        .drawer-overlay.show { display: block; }
+
+        .btn { display: flex; justify-content: center; align-items: center; width: 100%; padding: 15px; border-radius: 10px; font-weight: 700; font-size: 1.05rem; margin-bottom: 14px; border: none; gap: 10px; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .btn-gold { background: var(--primary-gold); color: #050b14; }
+        .hero { padding: 15px 0 40px; background: radial-gradient(circle at center, rgba(11, 27, 54, 0.85), #050b14), url('hero.png'); background-size: cover; background-position: center; margin-top: -30px; }
+        .brand-title { font-family: 'Fraunces', serif; font-size: 2.6rem; color: var(--primary-gold); margin-bottom: 5px; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.5); margin-top: 0; }
+        .tagline-pill { background: rgba(212, 160, 23, 0.1); color: var(--primary-gold); display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; margin: 5px 0 15px; border: 1px solid rgba(212, 160, 23, 0.4); font-weight: 700; letter-spacing: 1px; }
+        .live-status { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: #e5e7eb; margin-bottom: 15px; background: rgba(34, 197, 94, 0.15); padding: 5px 14px; border-radius: 12px; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .live-dot { width: 8px; height: 8px; background-color: var(--primary-green); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--primary-green); animation: status-blink 1.5s infinite ease-in-out; }
+        .hero-features-list { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 15px 0 25px 0; }
+        .hero-icon-tag { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; color: #f3f4f6; display: flex; align-items: center; gap: 6px; }
+        .hero-icon-tag i { color: var(--primary-gold); font-size: 0.85rem; }
+        .trust-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; font-weight: 600; color: #9ca3af; margin-top: 5px; margin-bottom: 15px; }
+        .trust-badge i { color: var(--primary-green); }
+        .stats-row { display: flex; justify-content: space-between; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+        .feature-card { background: var(--bg-card); padding: 15px; border-radius: 12px; border: 1px solid #1f2937; text-align: left; }
+        
+        /* Interactive Booking Box Layout updates */
+        .fare-box { background: #ffffff; border: none; border-radius: 16px; padding: 22px; margin-top: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); color: #1f2937; text-align: left; }
+        .fare-box h3 { color: #111827; font-size: 1.3rem; margin-bottom: 15px; text-align: center; font-family: 'Inter', sans-serif; font-weight: 700; }
+        .tabs-nav { display: flex; background: #111827; padding: 4px; border-radius: 10px; margin-bottom: 15px; gap: 2px; }
+        .tab-btn { flex: 1; padding: 11px 2px; background: transparent; border: none; color: var(--text-grey); font-size: 0.72rem; cursor: pointer; font-weight: 700; white-space: nowrap; text-transform: uppercase; text-align: center; }
+        .tab-btn.active { background: var(--primary-gold); color: #050b14; border-radius: 6px; }
+        
+        .form-label { display: block; font-size: 11px; font-weight: 800; color: #4b5563; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #d1d5db; margin-bottom: 14px; font-size: 0.95rem; text-align: left; color: #111827; font-weight: 600; background: #f9fafb; }
+        input:focus, select:focus { outline: 2px solid var(--primary-gold); background: #fff; }
+        
+        /* Inline Fleet Layout Cards Inside Form block area */
+        .fleet-selector-wrapper { margin-bottom: 14px; }
+        .fleet-grid-inline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 4px; }
+        .fleet-card-inline { border: 2px solid #e5e7eb; background: #f9fafb; border-radius: 10px; padding: 10px 2px; text-align: center; cursor: pointer; transition: all 0.2s ease; }
+        .fleet-card-inline.selected { border-color: var(--primary-gold); background: rgba(212, 160, 23, 0.08); }
+        .fleet-card-inline .c-name { font-size: 13px; font-weight: 800; color: #111827; }
+        .fleet-card-inline .c-pricing { font-size: 11px; font-weight: 700; color: #4b5563; margin-top: 1px; }
+
+        #oneway-options { display: flex; margin: -5px 0 14px; justify-content: flex-start; gap: 20px; font-weight: 700; background: #f3f4f6; padding: 10px 12px; border-radius: 8px; font-size: 0.85rem; color: #374151; }
+        #oneway-options label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+        #oneway-options input { width: auto; margin-bottom: 0; cursor: pointer; }
+        #tour-dropdown-container { display: none; }
+        #local-package-container { display: none; }
+
+        /* Rule Warning Banner */
+        .min-km-warning-box { background: #fff7ed; border-left: 4px solid #ea580c; padding: 10px 12px; font-size: 11px; font-weight: 600; color: #c2410c; border-radius: 4px; margin-bottom: 14px; line-height: 1.4; }
+
+        .keyword-helper-text { font-size: 0.8rem; color: #6b7280; margin-top: 10px; font-style: italic; font-weight: 500; text-align: center; }
+        
+        /* Master Rate Card Blocks Styles */
+        .master-tariff-title { font-size: 1.4rem; color: #ffffff; margin: 35px 0 15px; font-weight: 800; border-left: 4px solid var(--primary-gold); padding-left: 10px; text-transform: uppercase; }
+        .master-tariff-card { background: var(--bg-card); border: 1px solid #1f2937; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+        .m-tariff-hdr { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2937; padding-bottom: 8px; margin-bottom: 12px; }
+        .m-tariff-hdr h4 { font-size: 1.1rem; font-weight: 800; color: var(--primary-gold); }
+        .m-tariff-hdr span { font-size: 11px; background: #050b14; padding: 3px 10px; border-radius: 20px; color: var(--text-grey); font-weight: 600; }
+        .m-tariff-data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; text-align: center; }
+        .m-data-block div:first-child { font-size: 10px; color: var(--text-grey); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .m-data-block div:last-child { font-size: 14px; font-weight: 800; color: #ffffff; margin-top: 2px; }
+
+        /* Statewide Route Links Grid */
+        .statewide-routes-wrapper { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 15px; margin-bottom: 15px; }
+        .route-strip-link { background: var(--bg-card); border: 1px solid #1f2937; padding: 14px; border-radius: 8px; text-decoration: none; color: #ffffff; font-size: 13px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .route-strip-link span { color: var(--primary-gold); font-size: 12px; font-weight: bold; }
+
+        .fleet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+        .fleet-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid #1f2937; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .fleet-img { width: 100%; height: 110px; object-fit: cover; }
+        .fleet-info { padding: 10px; text-align: center; background: #050b14; border-top: 1px solid #1f2937; }
+        .fleet-info h4 { font-size: 0.95rem; margin-bottom: 2px; }
+        .fleet-info p { font-size: 0.75rem; color: var(--text-grey); }
+
+        .tour-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #1f2937; }
+        .tour-img { height: 180px; background-size: cover; background-position: center; position: relative; }
+        .tour-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); padding: 15px; }
+        .tour-points { margin-bottom: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 15px; }
+        .t-point { font-size: 0.75rem; color: #e5e7eb; display: flex; align-items: center; gap: 6px; }
+        .t-point i { color: var(--primary-gold); font-size: 0.7rem; }
+        
+        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); padding: 20px; overflow-y: auto; }
+        .modal-content { background: var(--bg-card); padding: 25px; border-radius: 15px; max-width: 500px; margin: 40px auto; border: 1px solid var(--primary-gold); color: #fff; font-size: 0.9rem; text-align: left; }
+        .close-modal { color: var(--primary-gold); float: right; font-size: 28px; font-weight: bold; cursor: pointer; margin-top: -10px; }
+        .sticky-footer { position: fixed; bottom: 0; left: 0; width: 100%; background: #0f1623; display: flex; padding: 12px; gap: 10px; z-index: 9999; box-shadow: 0 -5px 25px rgba(0,0,0,0.6); }
+        .sticky-btn { flex: 1; padding: 14px; border-radius: 8px; font-weight: 700; font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 8px; text-decoration: none; border: none; color: #fff; }
+        .sticky-pulse { animation: cta-pulse 2s infinite; }
+        @keyframes cta-pulse { 0% { box-shadow: 0 0 0 0 rgba(212, 160, 23, 0.7); } 70% { box-shadow: 0 0 0 12px rgba(212, 160, 23, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 160, 23, 0); } }
+        @keyframes status-blink { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+    </style>
+</head>
+<body id="home">
+
+<div id="drawerOverlay" class="drawer-overlay" onclick="toggleMenu()"></div>
+<nav id="navDrawer" class="nav-drawer">
+    <a href="#booking" class="nav-link" onclick="toggleMenu()"><i class="fas fa-taxi"></i> Book Drop Taxi</a>
+    <a href="#rates-section" class="nav-link" onclick="toggleMenu()"><i class="fas fa-list-alt"></i> Standard Tariff</a>
+    <a href="#routes-section" class="nav-link" onclick="toggleMenu()"><i class="fas fa-map-route"></i> Popular Routes</a>
+    <a href="#fleet" class="nav-link" onclick="toggleMenu()"><i class="fas fa-car"></i> Our Fleet</a>
+    <a href="#" class="nav-link" onclick="toggleMenu(); openModal('about')"><i class="fas fa-info-circle"></i> About Our Service</a>
+</nav>
+
+<div class="hero"><div class="container">
+    
+    <div class="header-nav">
+        <div class="tagline-pill">TAMIL NADU'S PREMIER INTERCITY TAXI NETWORK</div>
+        <button class="three-dot-btn" onclick="toggleMenu()"><i class="fas fa-ellipsis-v"></i></button>
+    </div>
+    
+    <div class="text-center">
+        <h1 class="brand-title">Go Kovai Cabs</h1>
+        <h2 style="font-size: 1.8rem; color: #fff; line-height: 1.4; font-weight: 700; margin-bottom: 5px;">
+            Premium <span class="text-gold">One-Way Drop Taxi</span> Service
+        </h2>
+        <p style="font-size: 0.95rem; color: #9ca3af; font-weight: 600; margin: 0 0 15px 0; letter-spacing: 0.5px;">
+            Save 50% on Outstation Travel. Pay Only One-Way Distance!
+        </p>
+
+        <div class="live-status"><span class="live-dot"></span> State-Wide Fleet Live</div>
+        
+        <div class="hero-features-list">
+            <div class="hero-icon-tag"><i class="fas fa-bolt"></i> No Return Trap</div>
+            <div class="hero-icon-tag"><i class="fas fa-hand-holding-dollar"></i> Fixed Billing</div>
+            <div class="hero-icon-tag"><i class="fas fa-user-shield"></i> Safe Chauffeurs</div>
+        </div>
+        
+        <a href="tel:+919043743777" class="btn btn-gold"><i class="fas fa-phone-alt"></i> CALL 9043743777</a>
+        <a href="https://wa.me/919043743777" class="btn" style="background:#22c55e; color:white;"><i class="fab fa-whatsapp"></i> BOOK ON WHATSAPP</a>
+        
+        <div class="trust-badge"><i class="fas fa-check-circle"></i> Verified Transparent Billing • 4.9★ Rated Service</div>
+
+        <div class="stats-row">
+            <div class="text-center"><span class="text-gold" style="font-size: 1.3rem; font-weight: 700;">₹14/KM</span><br><small style="color: var(--text-grey); font-weight: 600;">Sedan Base</small></div>
+            <div class="text-center"><span class="text-gold" style="font-size: 1.3rem; font-weight: 700;">₹0</span><br><small style="color: var(--text-grey); font-weight: 600;">Return Fare</small></div>
+            <div class="text-center"><span class="text-gold" style="font-size: 1.3rem; font-weight: 700;">24 HR</span><br><small style="color: var(--text-grey); font-weight: 600;">Live Dispatch</small></div>
+        </div>
+    </div>
+</div></div>
+
+<section id="features" class="container text-center">
+    <h3>Why Choose Our Intercity Fleet</h3>
+    <div class="grid-container">
+        <div class="feature-card"><i class="fas fa-sack-dollar text-gold"></i><br><b>No Return Charges</b></div>
+        <div class="feature-card"><i class="fas fa-shield-alt" style="color:#93c5fd"></i><br><b>Verified Drivers</b></div>
+        <div class="feature-card"><i class="fas fa-clock text-gold"></i><br><b>24/7 Dispatch</b></div>
+        <div class="feature-card"><i class="fas fa-star text-gold"></i><br><b>Transparent Costs</b></div>
+    </div>
+</section>
+
+<!-- Combined Booking Matrix Card Matching Search Engine Sitelink Intents -->
+<section id="booking" class="container">
+    <div class="tabs-nav">
+        <button id="btn-local" class="tab-btn" onclick="setCalcMode('local')">Local Rides</button>
+        <button id="btn-oneway" class="tab-btn active" onclick="setCalcMode('oneway')">One Way Drop</button>
+        <button id="btn-outstation" class="tab-btn" onclick="setCalcMode('outstation')">Outstation Taxi</button>
+        <button id="btn-airport" class="tab-btn" onclick="setCalcMode('airport')">Airport Transfer</button>
+    </div>
+    
+    <div class="fare-box">
+        <h3 id="booking-box-title">Book One Way Drop Taxi</h3>
+        
+        <!-- Fleet Category Cards Grid Built Directly Into Top Area -->
+        <div class="fleet-selector-wrapper">
+            <span class="form-label">Select Car Segment</span>
+            <div class="fleet-grid-inline">
+                <div class="fleet-card-inline selected" id="f-sedan" onclick="selectFleet('sedan', 14)">
+                    <div class="c-name">Sedan</div>
+                    <div class="c-pricing" id="f-sedan-price">₹14/KM</div>
+                </div>
+                <div class="fleet-card-inline" id="f-suv" onclick="selectFleet('suv', 18)">
+                    <div class="c-name">SUV</div>
+                    <div class="c-pricing" id="f-suv-price">₹18/KM</div>
+                </div>
+                <div class="fleet-card-inline" id="f-innova" onclick="selectFleet('innova', 20)">
+                    <div class="c-name">Innova</div>
+                    <div class="c-pricing" id="f-innova-price">₹20/KM</div>
+                </div>
+            </div>
+        </div>
+
+        <span class="form-label">From (Pickup Location)</span>
+        <input type="text" id="fromCity" placeholder="Type starting city (e.g., Chennai, Madurai, Salem)...">
+        
+        <span class="form-label" id="label-toCity">To (Drop Destination City)</span>
+        <input type="text" id="toCity" placeholder="Type destination drop city...">
+        
+        <!-- Local Hours Package Dropdown List -->
+        <div id="local-package-container">
+            <span class="form-label">Select Package Duration</span>
+            <select id="localPackageSelect">
+                <option value="1200">4 Hours / 40 KM — ₹1,200 Fixed</option>
+                <option value="2200">8 Hours / 80 KM — ₹2,200 Fixed</option>
+                <option value="3200">12 Hours / 120 KM — ₹3,200 Fixed</option>
+            </select>
+        </div>
+
+        <!-- Toggle Row for Oneway vs Round Trip Pricing Adjustments -->
+        <div id="oneway-options">
+            <label><input type="radio" name="tripType" value="oneway" checked onclick="adjustTripRates('oneway')"> One Way Drop</label>
+            <label><input type="radio" name="tripType" value="round" onclick="adjustTripRates('round')"> Round Trip</label>
+        </div>
+        
+        <!-- Outstation Package Shortcuts Dropdown List -->
+        <div id="tour-dropdown-container">
+            <span class="form-label">Tour Package Shortcuts</span>
+            <select id="tourSelect">
+                <option value="none">-- Optional Tourist Package Select --</option>
+                <option value="ooty">Coimbatore to Ooty Outstation Holiday Tour</option>
+                <option value="munnar">Coimbatore to Munnar Premium Nature Trip</option>
+                <option value="kodai">Coimbatore to Kodaikanal Sightseeing Run</option>
+                <option value="coonoor">Coimbatore to Coonoor Scenic Hill Tour</option>
+            </select>
+        </div>
+
+        <span class="form-label">Your Name</span>
+        <input type="text" id="custName" placeholder="Enter full name">
+        
+        <!-- Automatic KM Minimum Parameter Alert Notification Area -->
+        <div class="min-km-warning-box" id="warning-notice-text">
+            ℹ️ Distance Billing Framework: Minimum parameter rules apply. One-way runs compute at a minimum criteria threshold of 130 KM. Round trips allocate at 250 KM per day minimum rule. Paths scoring below boundaries auto-compute at baseline limits.
+        </div>
+
+        <button class="btn btn-gold" onclick="calculateFare()"><i class="fas fa-calculator"></i> CALCULATE TRIP FARE</button>
+        
+        <div class="keyword-helper-text">Statewide drops covering Chennai highway, Madurai, Salem, and Airport pickups.</div>
+        
+        <div id="fareResult" style="margin-top:20px; display:none; font-size: 1.1rem; font-weight: bold; color: #22c55e; background: rgba(34, 197, 94, 0.1); padding: 15px; border-radius: 8px; border: 1px dashed #22c55e;"></div>
+        <button id="confirmBookingBtn" class="btn" style="display:none; background:#22c55e; color:white; margin-top:10px;" onclick="confirmBooking()"><i class="fab fa-whatsapp"></i> CONFIRM BOOKING VIA WHATSAPP</button>
+    </div>
+</section>
+
+<!-- Verified Tariff Matrices Display Area Container -->
+<section class="container" id="rates-section">
+    <h3 class="master-tariff-title">Verified Standard Tariff Sheet</h3>
+    
+    <!-- Sedan Block -->
+    <div class="master-tariff-card">
+        <div class="m-tariff-hdr">
+            <h4>Prime Sedan</h4>
+            <span>Dzire, Etios, Aura</span>
+        </div>
+        <div class="m-tariff-data-row">
+            <div class="m-data-block">
+                <div>One Way</div>
+                <div class="text-gold">規制 ₹14/KM</div>
+            </div>
+            <div class="m-data-block">
+                <div>Round Trip</div>
+                <div>₹13/KM</div>
+                <div style="font-size:8px; color:var(--text-grey);">Min 250KM/Day</div>
+            </div>
+            <div class="m-data-block">
+                <div>Driver Bata</div>
+                <div>₹400</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUV Block -->
+    <div class="master-tariff-card">
+        <div class="m-tariff-hdr">
+            <h4>Spacious SUV</h4>
+            <span>Ertiga, Rumion, Triber</span>
+        </div>
+        <div class="m-tariff-data-row">
+            <div class="m-data-block">
+                <div>One Way</div>
+                <div class="text-gold">₹18/KM</div>
+            </div>
+            <div class="m-data-block">
+                <div>Round Trip</div>
+                <div>₹17/KM</div>
+                <div style="font-size:8px; color:var(--text-grey);">Min 250KM/Day</div>
+            </div>
+            <div class="m-data-block">
+                <div>Driver Bata</div>
+                <div>₹400</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Innova Block -->
+    <div class="master-tariff-card">
+        <div class="m-tariff-hdr">
+            <h4>Premium MUV</h4>
+            <span>Innova, Innova Crysta</span>
+        </div>
+        <div class="m-tariff-data-row">
+            <div class="m-data-block">
+                <div>One Way</div>
+                <div class="text-gold">₹20/KM</div>
+            </div>
+            <div class="m-data-block">
+                <div>Round Trip</div>
+                <div>₹19/KM</div>
+                <div style="font-size:8px; color:var(--text-grey);">Min 250KM/Day</div>
+            </div>
+            <div class="m-data-block">
+                <div>Driver Bata</div>
+                <div>₹400</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sitelink SEO Targeting Outstation Routes Block Links Grid Section -->
+<section class="container" id="routes-section">
+    <h3 class="master-tariff-title">Popular Tamil Nadu Drop Routes</h3>
+    <div class="statewide-routes-wrapper">
+        <a href="tel:+919043743777" class="route-strip-link">Chennai to Coimbatore One Way Drop Taxi <span>Book Now ›</span></a>
+        <a href="tel:+919043743777" class="route-strip-link">Coimbatore to Chennai One Way Drop Taxi <span>Book Now ›</span></a>
+        <a href="tel:+919043743777" class="route-strip-link">Madurai to Chennai One Way Drop Taxi <span>Book Now ›</span></a>
+        <a href="tel:+919043743777" class="route-strip-link">Trichy to Bangalore One Way Drop Taxi <span>Book Now ›</span></a>
+        <a href="tel:+919043743777" class="route-strip-link">Salem to Chennai One Way Drop Taxi <span>Book Now ›</span></a>
+        <a href="tel:+919043743777" class="route-strip-link">Coimbatore to Bangalore One Way Drop Taxi <span>Book Now ›</span></a>
+    </div>
+</section>
+
+<section id="fleet" class="container">
+    <h3 class="text-center">Our Fleet Gallery</h3>
+    <div class="fleet-grid">
+        <div class="fleet-card"><img src="dzire.png" class="fleet-img"><div class="fleet-info"><h4>Dzire</h4><p>Sedan Segment</p></div></div>
+        <div class="fleet-card"><img src="etios.png" class="fleet-img"><div class="fleet-info"><h4>Etios</h4><p>Sedan Segment</p></div></div>
+        <div class="fleet-card"><img src="innova.png" class="fleet-img"><div class="fleet-info"><h4>SUV Ertiga</h4><p>6/7 Seater SUV</p></div></div>
+        <div class="fleet-card"><img src="crysta.png" class="fleet-img"><div class="fleet-info"><h4>Innova Crysta</h4><p>Premium Luxury MUV</p></div></div>
+    </div>
+</section>
+
+<section id="tours" class="container">
+    <h3 class="text-center">Premium Holiday Packages</h3>
+    <div class="tour-card"><div class="tour-img" style="background-image:url('ooty.png');"><div class="tour-overlay"><b>Ooty Nature Outstation Run</b></div></div><div class="tour-points"><div class="t-point"><i class="fas fa-check-circle"></i> Lake Commutes</div><div class="t-point"><i class="fas fa-check-circle"></i> Doddabetta Hills</div></div><div style="padding:15px;"><a href="https://wa.me/919043743777" class="btn btn-gold">Book Outstation Ooty</a></div></div>
+    <div class="tour-card"><div class="tour-img" style="background-image:url('munnar.png');"><div class="tour-overlay"><b>Munnar Premium Holiday Tour</b></div></div><div class="tour-points"><div class="t-point"><i class="fas fa-check-circle"></i> Tea Gardens</div><div class="t-point"><i class="fas fa-check-circle"></i> Eco Points</div></div><div style="padding:15px;"><a href="https://wa.me/919043743777" class="btn btn-gold">Book Outstation Munnar</a></div></div>
+</section>
+
+<footer id="contact" class="container text-center" style="padding: 40px 20px; border-top: 1px solid #1f2937;">
+    <div class="brand-title" style="font-size:1.4rem">Go Kovai Cabs Intercity</div>
+    <p style="font-size:0.8rem; color: #9ca3af;">286, D B road, RS Puram, Coimbatore 641002</p>
+    <div style="margin-top:20px; font-size:0.75rem;">
+        <span onclick="openModal('privacy')" style="color: #6b7280; cursor:pointer;">Privacy Policy</span> • 
+        <span onclick="openModal('disclaimer')" style="color: #6b7280; cursor:pointer;">Disclaimer</span>
+    </div>
+</footer>
+
+<div class="sticky-footer">
+    <a href="https://wa.me/919043743777" class="sticky-btn" style="background:#22c55e;"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
+    <a href="tel:+919043743777" class="sticky-btn sticky-pulse" style="background:#d4a017; color:#000;"><i class="fas fa-phone-alt"></i> CALL NOW</a>
+</div>
+
+<div id="modalPrivacy" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('privacy')">&times;</span><h3>Privacy Policy</h3><p>We process pickup locations safely strictly to facilitate transport booking dispatches across South India. Your data details remain fully secured.</p></div></div>
+<div id="modalDisclaimer" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('disclaimer')">&times;</span><h3>Tariff Disclaimer</h3><p>Trips calculate map routes via distance matrices APIs. Minimum parameters enforce standard coverage bounds (130 KM for One-Way Drops / 250 KM for Round Trips). Real billing honors actual tracking metrics logs.</p></div></div>
+<div id="modalAbout" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('about')">&times;</span><h3>About Go Kovai Cabs</h3><p>We are a state-wide premier intercity drop networks operation provider across Tamil Nadu. Our focus is pure pricing transparency, fixed zero-surge kilometer rates, pristine sound-isolated cabin components, and fully vetted long-distance travel chauffeurs.</p></div></div>
+
+<script>
+let autocompleteFrom, autocompleteTo;
+let currentMode = 'oneway';
+let selectedCarSegment = 'sedan';
+let activeRatePerKm = 14;
+
+// Central Base Rate Matrices Object Mapping
+const baseTariffs = {
+    oneway: { sedan: 14, suv: 18, innova: 20 },
+    round: { sedan: 13, suv: 17, innova: 19 }
+};
+
+function toggleMenu() {
+    document.getElementById('navDrawer').classList.toggle('open');
+    document.getElementById('drawerOverlay').classList.toggle('show');
+}
+
+function initGoogle() {
+    autocompleteFrom = new google.maps.places.Autocomplete(document.getElementById('fromCity'), {componentRestrictions: {country: 'in'}});
+    autocompleteTo = new google.maps.places.Autocomplete(document.getElementById('toCity'), {componentRestrictions: {country: 'in'}});
+}
+
+// Handles Inline Car Segment Choice Changes
+function selectFleet(segment, baseRate) {
+    selectedCarSegment = segment;
+    activeRatePerKm = baseRate;
+    
+    document.querySelectorAll('.fleet-card-inline').forEach(card => card.classList.remove('selected'));
+    document.getElementById('f-' + segment).classList.add('selected');
+}
+
+// Adjusts Top View Indicator Numbers Depending On Active One-Way vs Round Choices
+function adjustTripRates(subType) {
+    const rateSedan = baseTariffs[subType].sedan;
+    const rateSuv = baseTariffs[subType].suv;
+    const rateInnova = baseTariffs[subType].innova;
+
+    document.getElementById('f-sedan-price').innerText = `\u20B9${rateSedan}/KM`;
+    document.getElementById('f-suv-price').innerText = `\u20B9${rateSuv}/KM`;
+    document.getElementById('f-innova-price').innerText = `\u20B9${rateInnova}/KM`;
+
+    // Re-bind current internal active selections dynamically
+    activeRatePerKm = baseTariffs[subType][selectedCarSegment];
+}
+
+// Tabs View Toggle Logic Synchronized To Core Ad Asset Structures
+function setCalcMode(mode) {
+    currentMode = mode;
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById('btn-' + mode).classList.add('active');
+    
+    // UI Elements Blocks Toggle Settings
+    const displayBoxHdr = document.getElementById('booking-box-title');
+    const optionsRow = document.getElementById('oneway-options');
+    const shortcutRow = document.getElementById('tour-dropdown-container');
+    const localRow = document.getElementById('local-package-container');
+    const dropInputGroup = document.getElementById('toCity');
+    const dropLabel = document.getElementById('label-toCity');
+    const policyNotice = document.getElementById('warning-notice-text');
+
+    // Default resetting inputs visibility states
+    optionsRow.style.display = 'none';
+    shortcutRow.style.display = 'none';
+    localRow.style.display = 'none';
+    dropInputGroup.style.display = 'block';
+    dropLabel.style.display = 'block';
+    policyNotice.style.display = 'block';
+
+    if (mode === 'oneway') {
+        displayBoxHdr.innerText = "Book One Way Drop Taxi";
+        optionsRow.style.display = 'flex';
+        policyNotice.innerText = "\u2139\uFE0F Distance Billing Framework: Minimum parameter rules apply. One-way runs compute at a minimum criteria threshold of 130 KM. Round trips allocate at 250 KM per day minimum rule. Paths scoring below boundaries auto-compute at baseline limits.";
+        adjustTripRates('oneway');
+    } else if (mode === 'outstation') {
+        displayBoxHdr.innerText = "Book Outstation Tour Taxi";
+        optionsRow.style.display = 'flex';
+        shortcutRow.style.display = 'block';
+        policyNotice.innerText = "\u2139\uFE0F Outstation Billing Rule: Holiday tours and multi-city circuits run on a minimum daily log limit of 250 KM combined with standard fixed bata criteria.";
+        adjustTripRates('oneway');
+    } else if (mode === 'local') {
+        displayBoxHdr.innerText = "Book Local Hourly Packages";
+        localRow.style.display = 'block';
+        dropInputGroup.style.display = 'none';
+        dropLabel.style.display = 'none';
+        policyNotice.innerText = "\u2139\uFE0F Local Rental Rule: Packages map flat flexible local rates constraints. Excess hour extensions or extended running kilometer limits are accounted for at destination drop completion panels.";
+    } else if (mode === 'airport') {
+        displayBoxHdr.innerText = "Book Airport Transfers";
+        policyNotice.innerText = "\u2139\uFE0F Airport Transfer Rule: Priority 24/7 airport terminal dispatch setups operating seamlessly across all major statewide terminals at transparent baseline limits.";
+    }
+
+    document.getElementById('fareResult').style.display = 'none';
+    document.getElementById('confirmBookingBtn').style.display = 'none';
+}
+
+// Master Automated KM Engine Core Pricing Calculator Script
+function calculateFare() {
+    const from = document.getElementById('fromCity').value;
+    const to = document.getElementById('toCity').value;
+    
+    if(!from) return alert("Please enter pickup location");
+    if(currentMode !== 'local' && !to) return alert("Please enter drop location");
+    
+    // If local mode is active, fetch internal dropdown values instantly skipping matrix distance overheads
+    if (currentMode === 'local') {
+        const localPackageCost = parseInt(document.getElementById('localPackageSelect').value);
+        const resDiv = document.getElementById("fareResult");
+        resDiv.innerHTML = `Selected Plan Cost: \u20B9${localPackageCost}<br>Package Model: ${selectedCarSegment.toUpperCase()}<br><small style="font-weight:normal;">Tolls, Parking & Driver Bata Extra</small>`;
+        resDiv.style.display = "block";
+        document.getElementById('confirmBookingBtn').style.display = 'flex';
+        return;
+    }
+
+    const service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix({ origins: [from], destinations: [to], travelMode: 'DRIVING' }, (response, status) => {
+        if (status === 'OK' && response.rows[0].elements[0].status !== "ZERO_RESULTS") {
+            const calculatedDistance = Math.round(response.rows[0].elements[0].distance.value / 1000);
+            let estimatedPrice = 0;
+            let displayDist = calculatedDistance;
+            
+            if (currentMode === 'airport') {
+                // Fixed airport baseline allocation algorithm metrics logic
+                estimatedPrice = 150 + (calculatedDistance * 25);
+            } else {
+                // Evaluates current active type parameter configurations chosen inside sub toggles
+                const tripType = document.querySelector('input[name="tripType"]:checked').value;
+                
+                if (tripType === 'oneway') {
+                    // Enforce strict 130 KM baseline mapping thresholds rule criteria constraints
+                    let billingDist = calculatedDistance < 130 ? 130 : calculatedDistance;
+                    estimatedPrice = (billingDist * activeRatePerKm) + 400; // Kilometer runs tally + 400 Fixed Driver Bata
+                    displayDist = calculatedDistance;
+                } else {
+                    // Enforce strict 250 KM daily boundary limit calculation matrix constraints
+                    let computedRoundDist = calculatedDistance * 2;
+                    let billingDist = computedRoundDist < 250 ? 250 : computedRoundDist;
+                    estimatedPrice = (billingDist * activeRatePerKm) + 400; // Kilometer runs tally + 400 Fixed Driver Bata
+                    displayDist = computedRoundDist;
+                }
+            }
+
+            const resDiv = document.getElementById("fareResult");
+            resDiv.innerHTML = `Total Calculated Distance: ${displayDist} KM<br>Estimated Total Fare: \u20B9${estimatedPrice}<br><small style="font-weight:normal; font-size:11px; display:block; margin-top:4px; line-height:1.2;">Includes Vehicle Running + Driver Bata. Tolls, Border Permits & Parking Extra according to actual usage bills.</small>`;
+            resDiv.style.display = "block";
+            document.getElementById('confirmBookingBtn').style.display = 'flex';
+        } else {
+            alert("Unable to calculate precise route distance. Please check your spelling coordinates input syntax.");
+        }
+    });
+}
+
+function confirmBooking() {
+    const name = document.getElementById('custName').value || 'Guest Member';
+    const distPriceText = document.getElementById('fareResult').innerText.replace(/\n/g, ' ');
+    
+    const tSelect = document.getElementById('tourSelect');
+    let tourInfo = "";
+    if(tSelect && tSelect.value !== "none" && currentMode === 'outstation') {
+        tourInfo = `\nSelected Route Shortcut: ${tSelect.options[tSelect.selectedIndex].text}`;
+    }
+
+    let msg = `*New Intercity Drop Inquiry*\nService Mode: ${currentMode.toUpperCase()}${tourInfo}\nClient Name: ${name}\nTrip Routing: ${document.getElementById('fromCity').value} to ${document.getElementById('toCity').value || 'Local Package Area'}\nVehicle Model Category: ${selectedCarSegment.toUpperCase()} Segment\nEstimation Metrics Breakdowns: ${distPriceText}`;
+    window.open(`https://wa.me/919043743777?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function toggleFaq(btn) { btn.parentNode.classList.toggle('active'); }
+function openModal(t) { document.getElementById(t==='privacy'?'modalPrivacy':t==='about'?'modalAbout':'modalDisclaimer').style.display='block'; }
+function closeModal(t) { document.getElementById(t==='privacy'?'modalPrivacy':t==='about'?'modalAbout':'modalDisclaimer').style.display='none'; }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7j5s8T369OKe4H69e3jhkGfM2sJhniCo&libraries=places&callback=initGoogle" async defer></script>
+</body>
+</html>
