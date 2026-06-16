@@ -28,7 +28,8 @@
         }
         
         * { box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-white); line-height: 1.6; padding-bottom: 85px; overflow-x: hidden; }
+        /* CHANGED: Increased padding-bottom to 140px to ensure footer clears sticky footer on all mobile screens */
+        body { background-color: var(--bg-dark); color: var(--text-white); line-height: 1.6; padding-bottom: 140px; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; position: relative; }
         .text-center { text-align: center; }
@@ -43,7 +44,7 @@
         .nav-drawer { position: fixed; top: 0; right: -250px; width: 250px; height: 100%; background: #070b14; z-index: 1000; box-shadow: -5px 0 25px rgba(0,0,0,0.8); transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 70px 20px 20px 20px; display: flex; flex-direction: column; gap: 15px; border-left: 1px solid var(--border-color); }
         .nav-drawer.open { right: 0; }
         .nav-link { color: #fff; text-decoration: none; font-size: 1rem; font-weight: 600; padding: 12px 15px; border-radius: 8px; background: rgba(255,255,255,0.03); display: flex; align-items: center; gap: 10px; transition: background 0.2s; }
-        .nav-link:hover { background: rgba(255, 183, 3, 0.15); color: var(--primary-yellow); }
+        .nav-link:hover { background: rgba(212, 183, 3, 0.15); color: var(--primary-yellow); }
         .nav-link i { color: var(--primary-yellow); width: 20px; }
         .drawer-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; }
         .drawer-overlay.show { display: block; }
@@ -67,9 +68,8 @@
         .section-title { font-size: 1.4rem; color: #ffffff; margin: 35px 0 15px 0; font-weight: 800; border-left: 4px solid var(--primary-yellow); padding-left: 10px; text-transform: uppercase; text-align: left; }
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
         .feature-card { background: var(--bg-card); padding: 15px; border-radius: 12px; border: 1px solid var(--border-color); text-align: left; display: flex; align-items: center; gap: 10px; }
-        .feature-card i { font-size: 1.2rem; }
         
-        /* Booking Component Fields Framework */
+        /* Calculator Elements Layout */
         .fare-box { background: #ffffff; border: none; border-radius: 16px; padding: 22px; margin-top: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); color: #1f2937; text-align: left; }
         .tabs-nav { display: flex; background: #070b14; padding: 4px; border-radius: 10px; margin-bottom: 15px; gap: 2px; }
         .tab-btn { flex: 1; padding: 11px 2px; background: transparent; border: none; color: var(--text-grey); font-size: 0.75rem; cursor: pointer; font-weight: 700; white-space: nowrap; text-transform: uppercase; text-align: center; }
@@ -85,7 +85,6 @@
 
         .keyword-helper-text { font-size: 0.78rem; color: #6b7280; margin-top: 8px; font-style: italic; font-weight: 500; text-align: center; }
         
-        /* RESTORED: Core Grid Configurations Covering All 6 Vehicles */
         .fleet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
         .fleet-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
         .fleet-img { width: 100%; height: 110px; object-fit: cover; background-color: #070b14; }
@@ -93,7 +92,6 @@
         .fleet-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; color: #ffffff; }
         .fleet-info p { font-size: 0.75rem; color: var(--text-grey); margin: 0; }
         
-        /* RESTORED: All 4 Premium Holiday Tour Framework Designs */
         .tour-card { background: var(--bg-card); border-radius: 14px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); }
         .tour-img { height: 140px; background-size: cover; background-position: center; position: relative; background-color: #1e2d4a; }
         .tour-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); padding: 12px; font-size: 1.2rem; font-weight: bold; color: var(--primary-yellow); }
@@ -101,7 +99,6 @@
         .t-point { font-size: 0.78rem; color: #e5e7eb; display: flex; align-items: center; gap: 6px; }
         .t-point i { color: var(--primary-yellow); font-size: 0.75rem; }
         
-        /* Action Pill Routes Routing Links */
         .popular-routes-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 15px; }
         .route-call-pill { background: var(--bg-card); border: 1px solid var(--border-color); padding: 14px; border-radius: 8px; text-decoration: none; color: #ffffff; font-size: 13px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
         .route-call-pill span { color: var(--primary-yellow); font-size: 12px; font-weight: 800; }
@@ -239,7 +236,6 @@
     </div>
 </section>
 
-<!-- RESTORED: Full 6 Fleet Categories Setup Matrix -->
 <section id="fleet" class="container">
     <h3 class="section-title">Our Maintained Fleet</h3>
     <div class="fleet-grid">
@@ -252,12 +248,10 @@
     </div>
 </section>
 
-<!-- RESTORED: All 4 Premium Holiday Tour Framework Designs with Original Checklists -->
 <section id="tours" class="container">
     <h3 class="section-title">Top Outstation Tour Packages</h3>
     <p style="font-size: 0.85rem; color: var(--text-grey); margin-top: -10px; margin-bottom: 20px; text-align: left;">We offer affordable outstation cab packages from Coimbatore to major travel destinations with premium vehicles.</p>
     
-    <!-- Tour 1 -->
     <div class="tour-card">
         <div class="tour-img" style="background-image:url('ooty.png');"><div class="tour-overlay">Ooty Outstation Taxi Tour</div></div>
         <div class="tour-points">
@@ -269,7 +263,6 @@
         <div style="padding:12px; background:#070b14;"><a href="tel:+919043743777" class="btn btn-gold" style="font-size:0.9rem; padding:12px; margin-bottom:0;"><i class="fas fa-phone-alt"></i> INSTANT OOTY BOOKING</a></div>
     </div>
     
-    <!-- Tour 2 -->
     <div class="tour-card">
         <div class="tour-img" style="background-image:url('munnar.png');"><div class="tour-overlay">Munnar Premium Holiday Tour</div></div>
         <div class="tour-points">
@@ -281,7 +274,6 @@
         <div style="padding:12px; background:#070b14;"><a href="tel:+919043743777" class="btn btn-gold" style="font-size:0.9rem; padding:12px; margin-bottom:0;"><i class="fas fa-phone-alt"></i> INSTANT MUNNAR BOOKING</a></div>
     </div>
 
-    <!-- Tour 3 -->
     <div class="tour-card">
         <div class="tour-img" style="background-image:url('kodaikanal.png');"><div class="tour-overlay">Kodaikanal Sightseeing Package</div></div>
         <div class="tour-points">
@@ -293,7 +285,6 @@
         <div style="padding:12px; background:#070b14;"><a href="tel:+919043743777" class="btn btn-gold" style="font-size:0.9rem; padding:12px; margin-bottom:0;"><i class="fas fa-phone-alt"></i> INSTANT KODAI BOOKING</a></div>
     </div>
 
-    <!-- Tour 4 -->
     <div class="tour-card">
         <div class="tour-img" style="background-image:url('coonoor.png');"><div class="tour-overlay">Coonoor Scenic Nature Trip</div></div>
         <div class="tour-points">
@@ -306,27 +297,25 @@
     </div>
 </section>
 
-<footer id="contact" class="container text-center" style="padding: 30px 15px; border-top: 1px solid var(--border-color);">
-    <div class="brand-title" style="font-size:1.4rem">Get Taxi Coimbatore</div>
-    <p style="font-size:0.8rem; color: var(--text-grey);">286, D B road, RS Puram, Coimbatore 641002</p>
-    <div style="margin-top:15px; font-size:0.75rem;">
-        <span onclick="openModal('privacy')" style="color: #6b7280; cursor:pointer;">Privacy Policy</span> • 
-        <span onclick="openModal('disclaimer')" style="color: #6b7280; cursor:pointer;">Disclaimer</span>
+<!-- CHANGED: Enhanced text colors to crisp white/gold and adjusted margins so it completely clears the sticky screen app layout -->
+<footer id="contact" class="container text-center" style="padding: 40px 15px 60px 15px; border-top: 1px solid var(--border-color); background: #070b14; margin-top: 20px;">
+    <div class="brand-title" style="font-size:1.5rem; color: var(--primary-yellow); margin-bottom: 8px;">Get Taxi Coimbatore</div>
+    <p style="font-size:0.9rem; color: #ffffff; font-weight: 500; margin-bottom: 15px;">286, D B road, RS Puram, Coimbatore 641002</p>
+    <div style="margin-top:20px; font-size:0.85rem; font-weight: 700;">
+        <span onclick="openModal('privacy')" style="color: var(--primary-yellow); cursor:pointer; text-decoration: underline; padding: 5px 10px;">Privacy Policy</span>  
+        <span style="color: #ffffff;">•</span> 
+        <span onclick="openModal('disclaimer')" style="color: var(--primary-yellow); cursor:pointer; text-decoration: underline; padding: 5px 10px;">Disclaimer</span>
     </div>
 </footer>
 
-<!-- Persistent Conversational Sticky Footer Area -->
 <div class="sticky-footer">
     <a href="https://wa.me/919043743777" class="sticky-btn" style="background:transparent; border: 1px solid rgba(255,255,255,0.2); color:#fff; flex:0.4;"><i class="fab fa-whatsapp"></i> CHAT</a>
     <a href="tel:+919043743777" class="sticky-btn sticky-pulse" style="background:var(--primary-yellow); color:#050b14; flex:0.6;"><i class="fas fa-phone-alt"></i> TAP TO CALL NOW</a>
 </div>
 
-<!-- Modals Systems Layout Configuration Wrapper -->
 <div id="modalPrivacy" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('privacy')">&times;</span><h3>Privacy Policy</h3><p>We process coordinate data strictly to coordinate immediate fleet dispatches. Your privacy is fully handled using secure architecture properties.</p></div></div>
 <div id="modalDisclaimer" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('disclaimer')">&times;</span><h3>Tariff Disclaimer</h3><p>Fares are processed through real-time maps distance logging engine parameters. Tollways, state border regulatory permits, and commercial parking variables are added onto completed receipts metrics actuals.</p></div></div>
-
-<!-- RESTORED: Complete About Us Corporate Integrity Panel Details -->
-<div id="modalAbout" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('about')">&times;</span><h3>About Get Taxi Kovai</h3><p>We are Coimbatore's premier taxi and custom travel business, dedicated to delivering transparent, fixed-fare transport across Tamil Nadu and Kerala. Operating directly out of the city center, our fleet provides exceptionally clear premium audio cabins, strict 24/7 reliability, zero surge traps, and verified elite local drivers for an uncompromised travel standard.</p></div></div>
+<div id="modalAbout" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('about')">&times;</span><h3>About Get Taxi Kovai</h3><p>Operating locally from RS Puram, we are Coimbatore's premier point-to-point urban transit and intercity outstation service provider. Our fleet specializes in custom fine-tuned vocal clear audio cabins, transparent per-kilometer configurations, and zero-surge guarantees for uncompromised city tracking safety scales.</p></div></div>
 
 <script>
 let autocompleteFrom, autocompleteTo;
@@ -342,7 +331,6 @@ function initGoogle() {
     autocompleteTo = new google.maps.places.Autocomplete(document.getElementById('toCity'), {componentRestrictions: {country: 'in'}});
 }
 
-// Dynamically changes selection text strings based on whether local or outstation tab is triggered
 function setCalcMode(mode) {
     currentMode = mode;
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -402,7 +390,6 @@ function calculateFare() {
                 let lowerBound = exactFare - 30;
                 if (lowerBound < base) lowerBound = base;
                 
-                // Renders the approximation range window (e.g., 10KM Sedan outputs exactly: ₹330 ~ ₹360)
                 resultHTML += `Estimated Fare: \u20B9${lowerBound} ~ \u20B9${exactFare}<br><small style="font-weight:600; color:#4b5563; font-size:11px; display:block; margin-top:3px;">Approximate local city ride calculation window.</small>`;
             } else if (currentMode === 'airport') {
                 let exactFare = 120 + (oneWayDist * 24);
